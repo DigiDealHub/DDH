@@ -1,389 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Details - DigiDealHub</title>
+  <title>Not Available - DigiDealHub</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      padding: 0;
       background-color: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-
-    .wrapper {
-      max-width: 1200px;
-      width: 100%;
-      padding: 20px;
-    }
-
-    .container {
-      display: flex;
-      gap: 30px;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: nowrap;
-    }
-
-    .left-side,
-    .right-side {
-      flex: 1 1 400px;
-      max-width: 400px;
-      display: flex;
       flex-direction: column;
-      gap: 15px;
     }
 
-    .left-side img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: contain;
-      box-shadow: 0 0 15px #00ffc8;
-      max-height: 300px;
-      transition: transform 0.3s ease;
+    .navbar {
+      background-color: #111;
+      border-bottom: 2px solid #00ffc8;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .left-side img:hover {
-      transform: scale(1.05);
-    }
-
-    .product-name {
-      font-size: 28px;
+    .logo {
+      font-size: 24px;
       font-weight: bold;
       color: #00ffc8;
     }
 
-    .description {
+    .links a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
       font-size: 16px;
-      line-height: 1.5;
-      color: #ccc;
     }
 
-    .right-side {
-      background-color: #111;
-      border-radius: 15px;
-      padding: 25px 30px;
-      box-shadow: 0 0 20px #00ffc8;
-      height: fit-content;
-    }
-
-    .right-side .product-name {
-      font-size: 24px;
-      margin-bottom: 5px;
-      color: #00ffc8;
-    }
-
-    .expiry-section {
+    .main-message {
+      flex-grow: 1;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .expiry-section label {
-      font-weight: 600;
-      font-size: 18px;
-    }
-
-    .options {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .option {
-      display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      user-select: none;
-      color: #ccc;
-      font-weight: 600;
+      text-align: center;
+      padding: 20px;
     }
 
-    input[type="radio"] {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2.5px solid #00ffc8;
-      border-radius: 50%;
-      outline: none;
-      cursor: pointer;
-      position: relative;
-      transition: background-color 0.3s, border-color 0.3s;
+    .main-message h1 {
+      font-size: 36px;
+      color: #888;
     }
 
-    input[type="radio"]:checked {
-      background-color: #00ffc8;
-      border-color: #00ffc8;
-    }
-
-    input[type="radio"]:checked::after {
-      content: "";
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      width: 8px;
-      height: 8px;
-      background: black;
-      border-radius: 50%;
-    }
-
-    .price {
-      font-size: 30px;
-      font-weight: 700;
+    .main-message h1 span {
       color: #00ffc8;
-      margin-top: 10px;
-      min-height: 40px;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-
-    .price.fade-out {
-      opacity: 0;
-    }
-
-    button.buy-now {
-      margin-top: 15px;
-      padding: 12px;
-      background: #00ffc8;
-      border: none;
-      border-radius: 10px;
-      color: black;
-      font-weight: 700;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button.buy-now:hover {
-      background: #ff4d4d;
-      color: white;
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      body {
-        align-items: flex-start;
-        overflow-y: auto;
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 20px;
       }
 
-      .container {
-        flex-direction: column;
-        height: auto;
-        gap: 20px;
+      .links a {
+        font-size: 14px;
+        margin-left: 12px;
       }
 
-      .left-side,
-      .right-side {
-        max-width: 100%;
-        flex: none;
+      .main-message h1 {
+        font-size: 28px;
       }
     }
 
     @media (max-width: 480px) {
-      .product-name {
-        font-size: 22px;
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .right-side .product-name {
-        font-size: 20px;
+      .links {
+        margin-top: 10px;
       }
 
-      .price {
+      .main-message h1 {
         font-size: 24px;
-      }
-
-      button.buy-now {
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .options {
-        gap: 12px;
-      }
-
-      .option {
-        font-size: 14px;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="wrapper">
-    <div class="container">
-      <div class="left-side">
-        <img src="https://via.placeholder.com/400x300?text=Wireless+Headphones" alt="Product Image"
-          id="product-image" />
-        <div class="product-name" id="left-product-name">Apple Gift Card</div>
-        <div class="description" id="product-description">
-       NOT Available For this Product
-        </div>
-      </div>
 
-      <div class="right-side">
-        <div class="product-name" id="right-product-name">Apple Gift Card</div>
-
-        <div class="expiry-section">
-          <label>Select Subscription Duration:</label>
-          <div class="options">
-            <label class="option">
-              <input type="radio" name="duration" value="1" checked />
-              $2
-            </label>
-            <label class="option">
-              <input type="radio" name="duration" value="6" />
-              $5
-            </label>
-            <label class="option">
-              <input type="radio" name="duration" value="12" />
-              $10
-            </label>
-          </div>
-        </div>
-
-        <div class="price" id="price">৳350</div>
-
-        <!-- ✅ Web3Form -->
-        <form action="https://api.web3forms.com/submit" method="POST" id="buyForm">
-          <input type="hidden" name="access_key" value="248ebd11-9175-43f8-8e72-f02293ad67b4" />
-          <input type="hidden" name="Product Name" id="form-product-name" value="Apple Gift Card">
-          <input type="hidden" name="Subscription Duration" id="form-duration" value="1 Month">
-          <input type="hidden" name="Price" id="form-price" value="৳350">
-          <button type="submit" class="buy-now">Buy Now</button>
-        </form>
-      </div>
+  <div class="navbar">
+    <div class="logo">DigiDealHub</div>
+    <div class="links">
+      <a href="https://ddh-iepf.onrender.com/">Home</a>
+      <a href="https://ddh-iepf.onrender.com/">Products</a>
+      <a href="#">Support</a>
     </div>
   </div>
 
-  <script>
-    const priceData = {
-      "2": 350,
-      "5": 650,
-      "10": 1300
-    };
-
-    const priceElement = document.getElementById('price');
-    const radios = document.querySelectorAll('input[name="duration"]');
-
-    const formDuration = document.getElementById('form-duration');
-    const formPrice = document.getElementById('form-price');
-
-    radios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        const duration = radio.value;
-        const price = priceData[duration];
-
-        // Update visible price
-        priceElement.classList.add('fade-out');
-        setTimeout(() => {
-          priceElement.textContent = `৳${price}`;
-          priceElement.classList.remove('fade-out');
-        }, 300);
-
-        // Update hidden form values
-        formDuration.value = {
-          "1": "1 Month",
-          "6": "6 Months",
-          "12": "12 Months"
-        }[duration];
-        formPrice.value = `৳${price}`;
-      });
-    });
-  </script>
-   <div id="popup" style="
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #111;
-    border: 2px solid #00ffc8;
-    padding: 30px;
-    border-radius: 15px;
-    display: none;
-    z-index: 9999;
-    color: white;
-    width: 90%;
-    max-width: 400px;
-  ">
-    <h2 style="color: #00ffc8; text-align:center;">Payment</h2>
-    <form id="paymentForm">
-      <label><input type="checkbox" name="method" value="Bkash"> Bkash 01773087649</label><br>
-      <label><input type="checkbox" name="method" value="Nagad"> NAGAD 01773087649</label><br><br>
-      <label><input type="checkbox" name="method" value="Upay"> UPAY 01642392981</label><br><br>
-
-
-      <label>Transaction ID:</label><br>
-      <input type="text" name="trxid" required style="width: 100%; padding: 8px; margin-top: 5px;"><br><br>
-
-      <label>Enter Your Gmail:</label><br>
-      <input type="email" name="gmail" required style="width: 100%; padding: 8px; margin-top: 5px;"><br><br>
-
-      <button type="submit"
-        style="width: 100%; padding: 10px; background: #00ffc8; color: black; font-weight: bold; border: none; border-radius: 8px;">Submit</button>
-    </form>
+  <div class="main-message">
+    <h1><span>Sorry</span>, Product is <span>Not Available</span> right now.</h1>
   </div>
 
-  <script>
-    const buyBtn = document.querySelector('.buy-now');
-    const popup = document.getElementById('popup');
-    const form = document.getElementById('buyForm');
-
-    buyBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      popup.style.display = 'block';
-    });
-
-    document.getElementById('paymentForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Fetch values
-      const methodCheckboxes = document.querySelectorAll('input[name="method"]:checked');
-      const methods = Array.from(methodCheckboxes).map(cb => cb.value).join(', ');
-      const trxid = this.trxid.value;
-      const gmail = this.gmail.value;
-
-      // Add these to the main form
-      const extraInput1 = document.createElement('input');
-      extraInput1.type = 'hidden';
-      extraInput1.name = 'Payment Method';
-      extraInput1.value = methods;
-
-      const extraInput2 = document.createElement('input');
-      extraInput2.type = 'hidden';
-      extraInput2.name = 'Transaction ID';
-      extraInput2.value = trxid;
-
-      const extraInput3 = document.createElement('input');
-      extraInput3.type = 'hidden';
-      extraInput3.name = 'Gmail';
-      extraInput3.value = gmail;
-
-      form.appendChild(extraInput1);
-      form.appendChild(extraInput2);
-      form.appendChild(extraInput3);
-
-      // Submit final form
-      form.submit();
-    });
-  </script>
 </body>
-
 </html>
