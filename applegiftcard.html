@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details - DigiDealHub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .left-side,
+    .right-side {
+      flex: 1 1 400px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .left-side img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 0 15px #00ffc8;
+      max-height: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .left-side img:hover {
+      transform: scale(1.05);
+    }
+
+    .product-name {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00ffc8;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .right-side {
+      background-color: #111;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 0 20px #00ffc8;
+      height: fit-content;
+    }
+
+    .right-side .product-name {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #00ffc8;
+    }
+
+    .expiry-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .expiry-section label {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .options {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      color: #ccc;
+      font-weight: 600;
+    }
+
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid #00ffc8;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    input[type="radio"]:checked {
+      background-color: #00ffc8;
+      border-color: #00ffc8;
+    }
+
+    input[type="radio"]:checked::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 8px;
+      height: 8px;
+      background: black;
+      border-radius: 50%;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: 700;
+      color: #00ffc8;
+      margin-top: 10px;
+      min-height: 40px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .price.fade-out {
+      opacity: 0;
+    }
+
+    button.buy-now {
+      margin-top: 15px;
+      padding: 12px;
+      background: #00ffc8;
+      border: none;
+      border-radius: 10px;
+      color: black;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.buy-now:hover {
+      background: #ff4d4d;
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      body {
+        align-items: flex-start;
+        overflow-y: auto;
+      }
+
+      .container {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+      }
+
+      .left-side,
+      .right-side {
+        max-width: 100%;
+        flex: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-name {
+        font-size: 22px;
+      }
+
+      .right-side .product-name {
+        font-size: 20px;
+      }
+
+      .price {
+        font-size: 24px;
+      }
+
+      button.buy-now {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      .options {
+        gap: 12px;
+      }
+
+      .option {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="left-side">
+        <img src="https://via.placeholder.com/400x300?text=Wireless+Headphones" alt="Product Image"
+          id="product-image" />
+        <div class="product-name" id="left-product-name">Apple Gift Card</div>
+        <div class="description" id="product-description">
+        2 TB Storage
+        </div>
+      </div>
+
+      <div class="right-side">
+        <div class="product-name" id="right-product-name">Apple Gift Card</div>
+
+        <div class="expiry-section">
+          <label>Select Subscription Duration:</label>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="duration" value="1" checked />
+              $2
+            </label>
+            <label class="option">
+              <input type="radio" name="duration" value="6" />
+              $5
+            </label>
+            <label class="option">
+              <input type="radio" name="duration" value="12" />
+              $10
+            </label>
+          </div>
+        </div>
+
+        <div class="price" id="price">৳350</div>
+
+        <!-- ✅ Web3Form -->
+        <form action="https://api.web3forms.com/submit" method="POST" id="buyForm">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="Product Name" id="form-product-name" value="Apple Gift Card">
+          <input type="hidden" name="Subscription Duration" id="form-duration" value="1 Month">
+          <input type="hidden" name="Price" id="form-price" value="৳350">
+          <button type="submit" class="buy-now">Buy Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const priceData = {
+      "2": 350,
+      "5": 650,
+      "10": 1300
+    };
+
+    const priceElement = document.getElementById('price');
+    const radios = document.querySelectorAll('input[name="duration"]');
+
+    const formDuration = document.getElementById('form-duration');
+    const formPrice = document.getElementById('form-price');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const duration = radio.value;
+        const price = priceData[duration];
+
+        // Update visible price
+        priceElement.classList.add('fade-out');
+        setTimeout(() => {
+          priceElement.textContent = `৳${price}`;
+          priceElement.classList.remove('fade-out');
+        }, 300);
+
+        // Update hidden form values
+        formDuration.value = {
+          "1": "1 Month",
+          "6": "6 Months",
+          "12": "12 Months"
+        }[duration];
+        formPrice.value = `৳${price}`;
+      });
+    });
+  </script>
+</body>
+
+</html>
