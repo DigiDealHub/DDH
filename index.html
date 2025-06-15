@@ -176,20 +176,22 @@
       }
     ];
 
-    function renderProducts() {
-      const container = document.getElementById("products");
-      products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <button onclick="window.location.href='youtube.html'">View Details</button>
-        `;
-        container.appendChild(card);
-      });
-    }
+function renderProducts() {
+  const container = document.getElementById("products");
+  products.forEach(product => {
+    const fileName = product.name.toLowerCase().replace(/\s+/g, '') + ".html"; // e.g. Youtube Premium → youtube.html
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <button onclick="window.location.href='${fileName}'">View Details</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
 
     function showProducts() {
       document.getElementById("landing").style.display = "none";
