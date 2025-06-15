@@ -308,6 +308,83 @@
       });
     });
   </script>
+   <div id="popup" style="
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #111;
+    border: 2px solid #00ffc8;
+    padding: 30px;
+    border-radius: 15px;
+    display: none;
+    z-index: 9999;
+    color: white;
+    width: 90%;
+    max-width: 400px;
+  ">
+    <h2 style="color: #00ffc8; text-align:center;">Payment</h2>
+    <form id="paymentForm">
+      <label><input type="checkbox" name="method" value="Bkash"> Bkash 01**</label><br>
+      <label><input type="checkbox" name="method" value="Nagad"> NAGAD 01773087649</label><br><br>
+      <label><input type="checkbox" name="method" value="Upay"> UPAY 01642392981</label><br><br>
+
+
+      <label>Transaction ID:</label><br>
+      <input type="text" name="trxid" required style="width: 100%; padding: 8px; margin-top: 5px;"><br><br>
+
+      <label>Enter Your Gmail:</label><br>
+      <input type="email" name="gmail" required style="width: 100%; padding: 8px; margin-top: 5px;"><br><br>
+
+      <button type="submit"
+        style="width: 100%; padding: 10px; background: #00ffc8; color: black; font-weight: bold; border: none; border-radius: 8px;">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const buyBtn = document.querySelector('.buy-now');
+    const popup = document.getElementById('popup');
+    const form = document.getElementById('buyForm');
+
+    buyBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      popup.style.display = 'block';
+    });
+
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Fetch values
+      const methodCheckboxes = document.querySelectorAll('input[name="method"]:checked');
+      const methods = Array.from(methodCheckboxes).map(cb => cb.value).join(', ');
+      const trxid = this.trxid.value;
+      const gmail = this.gmail.value;
+
+      // Add these to the main form
+      const extraInput1 = document.createElement('input');
+      extraInput1.type = 'hidden';
+      extraInput1.name = 'Payment Method';
+      extraInput1.value = methods;
+
+      const extraInput2 = document.createElement('input');
+      extraInput2.type = 'hidden';
+      extraInput2.name = 'Transaction ID';
+      extraInput2.value = trxid;
+
+      const extraInput3 = document.createElement('input');
+      extraInput3.type = 'hidden';
+      extraInput3.name = 'Gmail';
+      extraInput3.value = gmail;
+
+      form.appendChild(extraInput1);
+      form.appendChild(extraInput2);
+      form.appendChild(extraInput3);
+
+      // Submit final form
+      form.submit();
+    });
+  </script>
+
 </body>
 
 </html>
