@@ -1,169 +1,125 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DigiDealHub</title>
   <style>
     * {
       box-sizing: border-box;
+      scrollbar-width: none;
     }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f2f2f2;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
     }
 
     header {
-      background-color: #333;
+      background: linear-gradient(90deg, #1f1c2c, #928dab);
       color: white;
       padding: 15px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
     }
 
-    header img {
-      height: 40px;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
     }
 
-    nav {
-      position: relative;
-    }
-
-    nav .menu-toggle {
+    .menu-icon {
       display: none;
-      background-color: #444;
-      padding: 8px 12px;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
     }
 
-    nav ul {
-      list-style: none;
+    .hero {
+      height: 100vh;
       display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    /* 📱 মোবাইলের জন্য স্টাইল */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #444;
-        position: absolute;
-        top: 40px;
-        right: 0;
-        width: 150px;
-        padding: 10px;
-        border-radius: 6px;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      nav .menu-toggle {
-        display: inline-block;
-      }
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-size: 16px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="file"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    .product-list label {
-      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 8px;
-      font-size: 15px;
+      text-align: center;
+      padding: 20px;
     }
 
-    .product-list input[type="checkbox"] {
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border: 2px solid #555;
-      border-radius: 50%;
-      margin-right: 10px;
-      position: relative;
+    .hero h1 {
+      font-size: 3rem;
+      color: #00ffc8;
     }
 
-    .product-list input[type="checkbox"]:checked::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 10px;
-      height: 10px;
-      background: #555;
-      border-radius: 50%;
+    .typed-text {
+      font-size: 2rem;
+      margin: 20px 0;
+      min-height: 50px;
     }
 
-    .payment-options label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 15px;
-    }
-
-    .payment-options input[type="radio"] {
-      margin-right: 5px;
-    }
-
-    button {
-      margin-top: 20px;
-      width: 100%;
-      background-color: #333;
-      color: white;
-      padding: 12px;
+    .hero button {
+      padding: 14px 28px;
+      background-color: #00ffc8;
+      color: black;
       border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background-color: #ff4d4d;
+    }
+
+    .products-container {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .product-card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px #111;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product-card h3 {
+      margin: 15px 0 10px;
+      font-size: 18px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .product-card button {
+      background-color: #00ffc8;
+      color: black;
+      border: none;
+      padding: 10px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
+      font-weight: bold;
     }
 
-    button:hover {
-      background-color: #555;
+    .product-card button:hover {
+      background-color: #ff4d4d;
     }
   </style>
 </head>
@@ -171,65 +127,110 @@
 <body>
 
   <header>
-    <h2>DigiDealHub</h2>
-    <nav>
-      <button class="menu-toggle" onclick="toggleMenu()">Menu ☰</button>
-      <ul id="nav-links">
-        <li><a href="#">হোম</a></li>
-        <li><a href="#">প্রোডাক্ট</a></li>
-        <li><a href="#">যোগাযোগ</a></li>
-      </ul>
-    </nav>
+    <div class="logo">DigiDealHub</div>
   </header>
 
-  <div class="container">
-    <h2>অর্ডার ফর্ম</h2>
-    <form action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="248ebd11-9175-43f8-8e72-f02293ad67b4">
-      <label for="name">নাম:</label>
-      <input type="text" id="name" name="name" required>
+  <!-- Landing Page -->
+  <section id="landing" class="hero">
+    <h1>Welcome</h1>
+    <div class="typed-text" id="typed"></div>
+    <button onclick="showProducts()">Shop Now</button>
+  </section>
 
-      <label for="email">জিমেইল: [👉 Subscription will be activated on this email]</label>
-      <input type="email" id="email" name="email" required>
-
-      <label>প্রোডাক্ট লিস্ট (টিক দিন):</label>
-      <div class="product-list">
-        <label><input type="checkbox" name="product" value="Yt-1">Youtube Premium 1 Month BDT 100</label>
-        <label><input type="checkbox" name="product" value="Yt-6">Youtube Premium 6 Month BDT 499</label>
-        <label><input type="checkbox" name="product" value="Yt-12">Youtube Premium 12 Month BDT 900
-        </label>
-        <label><input type="checkbox" name="product" value="canva">Canva Pro BDT 99</label>
-        <label><input type="checkbox" name="product" value="gpt">ChatGPT Plus</label>
-        <label><input type="checkbox" name="product" value="grammerly">Grammarly Premium</label>
-        <label><input type="checkbox" name="product" value="GDrive 1mnth">Google Drive 2TB 1 Month BDT 110</label>
-        <label><input type="checkbox" name="product" value="GDrive 6mnth">Google Drive 2TB 6 Month BDT 550</label>
-        <label><input type="checkbox" name="product" value="GDrive 12mnth">Google Drive 2TB 12 Month BDT 1000</label>
-        <label><input type="checkbox" name="product" value="apple">Apple Gift Card 2$ BDT 250</label>
-
-      </div>
-
-      <label>পেমেন্ট কোন নাম্বারে করেছেন?</label>
-      <div class="payment-options">
-        <label><input type="radio" name="payment_number" value="Bkash"> BKASH 01773087649</label>
-        <label><input type="radio" name="payment_number" value="Nagad">NAGAD 01773087649</label>
-        <label><input type="radio" name="payment_number" value="Rocket">ROCKET 0164292981</label>
-        <label><input type="radio" name="payment_number" value="Upay">UPAY 01642392981</label>
-      </div>
-
-      <label for="tranjection_id">ট্রাঞ্জেকশন আইডি:</label>
-      <input type="text" id="trxid" name="trxid" required>
-
-      <label for="screenshot">পেমেন্ট স্ক্রিনশট:</label>
-      <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
-
-      <button type="submit">সাবমিট</button>
-    </form>
-  </div>
+  <!-- Products Page -->
+  <section id="products" class="products-container">
+    <!-- Products will be inserted here -->
+  </section>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('nav-links').classList.toggle('show');
+    const products = [
+      {
+        name: "Youtube Premium",
+        image: "https://via.placeholder.com/300x150?text=Youtube+Premium",
+        description: "Ad-free videos, background play, and more."
+      },
+      {
+        name: "Canva Pro",
+        image: "https://via.placeholder.com/300x150?text=Canva+Pro",
+        description: "Design tools with premium templates and assets."
+      },
+      {
+        name: "ChatGpt Plus",
+        image: "https://via.placeholder.com/300x150?text=ChatGpt+Plus",
+        description: "Faster responses and early access to features."
+      },
+      {
+        name: "Grammarly Premium",
+        image: "https://via.placeholder.com/300x150?text=Grammarly+Premium",
+        description: "Advanced grammar checks and suggestions."
+      },
+      {
+        name: "Google Drive",
+        image: "https://via.placeholder.com/300x150?text=Google+Drive",
+        description: "Cloud storage with extra capacity."
+      },
+      {
+        name: "Apple Gift Card",
+        image: "https://via.placeholder.com/300x150?text=Apple+Gift+Card",
+        description: "Redeemable for Apple products and services."
+      }
+    ];
+
+    function renderProducts() {
+      const container = document.getElementById("products");
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <button onclick="window.location.href='product.html'">View Details</button>
+        `;
+        container.appendChild(card);
+      });
     }
+
+    function showProducts() {
+      document.getElementById("landing").style.display = "none";
+      const productSection = document.getElementById("products");
+      productSection.style.display = "grid";
+    }
+
+    // Typing animation
+    const texts = [
+      "To DigiDealHub!",
+      "Top-rated Products Available!",
+      "Trusted & Secure Digital Shopping."
+    ];
+    let index = 0, charIndex = 0;
+    const typedElement = document.getElementById("typed");
+
+    function type() {
+      if (charIndex < texts[index].length) {
+        typedElement.textContent += texts[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedElement.textContent = texts[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else {
+        index = (index + 1) % texts.length;
+        setTimeout(type, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(type, 500);
+      renderProducts();
+    });
   </script>
 
 </body>
