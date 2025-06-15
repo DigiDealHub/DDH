@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not Available - DigiDealHub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #111;
+      border-bottom: 2px solid #00ffc8;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00ffc8;
+    }
+
+    .links a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .main-message {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .main-message h1 {
+      font-size: 36px;
+      color: #888;
+    }
+
+    .main-message h1 span {
+      color: #00ffc8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 20px;
+      }
+
+      .links a {
+        font-size: 14px;
+        margin-left: 12px;
+      }
+
+      .main-message h1 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .links {
+        margin-top: 10px;
+      }
+
+      .main-message h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">DigiDealHub</div>
+    <div class="links">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+
+  <div class="main-message">
+    <h1><span>Sorry</span>, this Mobile or TV Product is <span>Not Available</span> right now.</h1>
+  </div>
+
+</body>
+</html>
